@@ -64,6 +64,6 @@
 
 ## 后续
 
-持续更新中，觉得还可以的话点个 **star** 收藏呀 ⭐️~
+持续更新中，觉得还可以的话点个 **star** 收藏下 ⭐️~
 
 【 Github 】[https://github.com/fikry102/algorithm_template](https://github.com/fikry102/algorithm_template) ⭐️

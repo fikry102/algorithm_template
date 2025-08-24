@@ -35,45 +35,77 @@ class Solution:
 
 > 给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。
 
-- 思路：这是一个典型的应用回溯法的题目，简单来说就是穷尽所有可能性，算法模板如下
+- 模板代码：路径记，选列表；递归收，做撤销。（子集全，组合限，排列标，分割切）
 
-```go
-result = []
-func backtrack(选择列表,路径):
+**子集问题（Subset）**
+
+- 每次递归都收集结果 → `res.append(path[:])`。
+- 遍历时从 `start` 开始，避免重复。
+
+**组合问题（Combination）**
+
+- 收集结果时要求满足条件（如 `len(path) == k` 或 `sum == target`）。
+- 遍历时同样用 `start` 控制，避免顺序不同的重复。
+
+**排列问题（Permutation）**
+
+- 每次选取要“标记已用”，避免重复用同一个元素。
+- 通常用 `used[i]` 数组来记录。
+
+**分割问题（Partition）**
+
+- 遍历时不是一个个元素，而是切分点（字符串切片）。
+- 每次切一刀进入递归。
+
+
+
+分割问题：把一个序列（常见是字符串或数组）切分成若干段，要求每一段满足一定条件，然后枚举所有可能的切法。
+
+
+
+**路径记**
+ 用 `path` 保存当前构建的解法。
+
+**选列表**
+ 决定这一层能选哪些元素（通常由 `start` 或 `used` 控制）。
+
+**递归收**
+ 当满足条件时（或随时）把路径放入结果。
+
+**做撤销**
+ 回到上一步，尝试别的选择。
+
+```python
+def backtrack(选择列表, 路径):
     if 满足结束条件:
-        result.add(路径)
+        res.append(path[:])            # 路径记
         return
-    for 选择 in 选择列表:
+    
+    for 选择 in 选择列表:              # 选列表
+        if 不合法: continue
         做选择
-        backtrack(选择列表,路径)
-        撤销选择
+        backtrack(新的选择列表, 路径)   # 递归收
+        撤销选择                        # 做撤销
+
 ```
 
-- 通过不停的选择，撤销选择，来穷尽所有可能性，最后将满足条件的结果返回。答案代码：
+- 当前这道题属于子集问题，通过不停的选择，撤销选择，来穷尽所有可能性，最后将满足条件的结果返回。答案代码：
 
 ```Python
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        
-        n = len(nums)
-        result = []
-        
-        def backtrack(start, k, route=[]):
-            if len(route) == k:
-                result.append(route.copy())
-                return
-            
-            for i in range(start, n):
-                route.append(nums[i])
-                backtrack(i + 1, k)
-                route.pop()
+        res,path=[],[]
+        n=len(nums)
 
-            return
-        
-        for k in range(n + 1):
-            backtrack(0, k)
-        
-        return result
+        def backtrack(start):
+            res.append(path[:])
+            for i in range(start, n):
+                path.append(nums[i])
+                backtrack(i+1)
+                path.pop()
+
+        backtrack(0)
+        return res
 ```
 
 说明：后面会深入讲解几个典型的回溯算法问题，如果当前不太了解可以暂时先跳过

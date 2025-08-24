@@ -30,6 +30,7 @@ class Solution:
 - 循环时，起点变量 start 不需要遍历到最后一个位置，只需要到 n - m
 - 如果在某个 start 位置截取的子串等于 needle，就返回这个下标
 
+其实这道题还有一个时间复杂度为O(m+n)的解法，也就是KMP算法，可以看[KMP算法题解](https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/solutions/575568/shua-chuan-lc-shuang-bai-po-su-jie-fa-km-tb86)
 ### [示例 2：subsets](https://leetcode-cn.com/problems/subsets/)
 
 > 给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。

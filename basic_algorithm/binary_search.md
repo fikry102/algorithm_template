@@ -6,7 +6,7 @@
 
 常用的二分搜索模板有如下三种形式：
 
-![binary_search_template](images/binary_search_template.png)
+![binary_search_template](../images/binary_search_template.png)
 
 其中，模板 1 和 3 是最常用的，几乎所有二分查找问题都可以用其中之一轻松实现。模板 2 更高级一些，用于解决某些类型的问题。详细的对比可以参考 Leetcode 上的文章：[二分搜索模板](https://leetcode-cn.com/explore/learn/card/binary-search/212/template-analysis/847/)。
 

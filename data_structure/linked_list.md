@@ -4,7 +4,7 @@
 
 链表相关的核心点
 
-- null/nil 异常处理
+- null异常处理
 - dummy node 哑巴节点
 - 快慢指针
 - 插入一个节点到排序链表
@@ -309,7 +309,6 @@ class Solution:
 
 - 思路1：Hash Table 记录所有结点判断重复，空间复杂度 O(n) 非最优，时间复杂度 O(n) 但必然需要 n 次循环
 - 思路2：快慢指针，快慢指针相同则有环，证明：如果有环每走一步快慢指针距离会减 1，空间复杂度 O(1) 最优，时间复杂度 O(n) 但循环次数小于等于 n
-  ![fast_slow_linked_list](https://img.fuiboom.com/img/fast_slow_linked_list.png)
 
 ```Python
 class Solution:
@@ -332,7 +331,6 @@ class Solution:
 
 - 思路：快慢指针，快慢相遇之后，慢指针回到头，快慢指针步调一致一起移动，相遇点即为入环点。
 
-![cycled_linked_list](https://img.fuiboom.com/img/cycled_linked_list.png)
 
 ```Python
 class Solution:
@@ -465,7 +463,7 @@ class Solution:
 
 链表必须要掌握的一些点，通过下面练习题，基本大部分的链表类的题目都是手到擒来~
 
-- null/nil 异常处理
+- null异常处理
 - dummy node 哑巴节点
 - 快慢指针
 - 插入一个节点到排序链表

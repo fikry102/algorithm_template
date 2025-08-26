@@ -2,45 +2,74 @@
 
 ## 模板
 
-```cpp
-/* 滑动窗口算法框架 */
-void slidingWindow(string s, string t) {
-    unordered_map<char, int> need, window;
-    for (char c : t) need[c]++;
+```python
+from collections import Counter, defaultdict
 
-    int left = 0, right = 0;
-    int valid = 0;
-    while (right < s.size()) {
-        // c 是将移入窗口的字符
-        char c = s[right];
-        // 右移窗口
-        right++;
-        // 进行窗口内数据的一系列更新
-        ...
+def sliding_window(s: str, t: str):
+    """
+    在 s 上维护一个可伸缩窗口，使其满足关于 t 的某种条件（如覆盖、异位词等）。
+    你只需要在标注的四处填入题目相关逻辑即可。
+    """
+    need = Counter(t)            # 需要满足的字符频次
+    window = defaultdict(int)    # 当前窗口内的字符频次
+    valid = 0                    # 满足 need[c] 的字符种类数（窗口内恰好达到要求就 +1）
 
-        /*** debug 输出的位置 ***/
-        printf("window: [%d, %d)\n", left, right);
-        /********************/
+    left = 0
+    right = 0
 
-        // 判断左侧窗口是否要收缩
-        while (window needs shrink) {
-            // d 是将移出窗口的字符
-            char d = s[left];
-            // 左移窗口
-            left++;
-            // 进行窗口内数据的一系列更新
-            ...
-        }
-    }
-}
+    # —— 可选：用于返回答案的变量（示例为最小覆盖子串）——
+    start, min_len = 0, float('inf')  # ④ 题意相关：如何记录或更新答案
+
+    while right < len(s):
+        # 右侧字符入窗
+        c = s[right]
+        right += 1
+
+        # ① 右指针右移之后，窗口数据更新
+        if c in need:
+            window[c] += 1
+            if window[c] == need[c]:
+                valid += 1
+
+        # —— debug 输出：Python 习惯用半开区间 [left, right) —— 
+        # print(f"window: [{left}, {right}) -> {s[left:right]}")
+
+        # ② 判断窗口是否需要收缩（条件因题而异）
+        # 例如“窗口已经覆盖所有所需字符”：
+        while valid == len(need):
+            # ④ 根据题意计算结果（例如更新最小区间）
+            if right - left < min_len:
+                start, min_len = left, right - left
+
+            # 左侧字符出窗
+            d = s[left]
+            left += 1
+
+            # ③ 左指针右移之后，窗口数据更新
+            if d in need:
+                if window[d] == need[d]:
+                    valid -= 1
+                window[d] -= 1
+
+    # ④ 返回题意需要的结果（此处示例为最小覆盖子串；其他题可改为计数/布尔/列表等）
+    return "" if min_len == float('inf') else s[start:start + min_len]
+
 ```
 
-需要变化的地方
+## 使用说明（如何“套模板”）
 
-- 1、右指针右移之后窗口数据更新
-- 2、判断窗口是否要收缩
-- 3、左指针右移之后窗口数据更新
-- 4、根据题意计算结果
+- ① 右移 `right` 后更新窗口：通常是 `window[c] += 1`，并在“恰好达到需求”时 `valid += 1`。
+- ② 什么时候收缩：按题意决定。
+  - 最小覆盖类：当 `valid == len(need)` 时收缩。
+  - 无重复字符最长子串：当出现重复（如 `window[c] > 1`）时收缩。
+- ③ 左移 `left` 后更新窗口：通常是把 `window[d] -= 1`，并在从“满足”变为“不满足”时 `valid -= 1`。
+- ④ 如何计算结果：
+  - 返回最小窗口：维护 `start, min_len`。
+  - 返回是否存在：满足条件时可直接 `return True`。
+  - 返回所有起点：满足条件时收集索引。
+  - 返回最大长度：维护 `ans = max(ans, right-left)`。
+
+
 
 ## 示例
 

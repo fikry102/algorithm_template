@@ -4,7 +4,7 @@
 
 栈的特点是后入先出
 
-![image.png](https://img.fuiboom.com/img/stack.png)
+![image.png](../images/stack.png)
 
 根据这个特点可以临时保存一些数据，之后用到依次再弹出来，常用于 DFS 深度搜索
 

@@ -2,38 +2,140 @@
 
 ## 背景
 
-先从一道题目开始~
+我们先从一道经典题目入手：
 
-如题  [triangle](https://leetcode-cn.com/problems/triangle/)
+题目：[Triangle（三角形最小路径和）](https://leetcode-cn.com/problems/triangle/)
 
-> 给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。
+给定一个三角形 `triangle`，找出自顶向下的最小路径和。每一步只能移动到下一行中**相邻的结点**。相邻的定义：如果当前在第 `i` 行的下标为 `j`，那么下一步只能走到第 `i+1` 行的下标 `j` 或 `j+1`。
 
-例如，给定三角形：
+示例 1
 
-```text
-[
-     [2],
-    [3,4],
-   [6,5,7],
-  [4,1,8,3]
-]
+**输入：**
+
+```python
+triangle = [[2],[3,4],[6,5,7],[4,1,8,3]]
 ```
 
-自顶向下的最小路径和为  11（即，2 + 3 + 5 + 1 = 11）。
+**输出：**
 
-使用 DFS（遍历 或者 分治法）
+```
+11
+```
 
-遍历
+**解释：**
 
-![image.png](../images/dp_triangle.png)
+```
+    2
+   3 4
+  6 5 7
+ 4 1 8 3
+```
 
-分治法
+最小路径为 `2 → 3 → 5 → 1`，路径和为 **11**。
 
-![image.png](../images/dp_dc.png)
+## 方法一：DFS 遍历（暴力搜索）
 
-优化 DFS，缓存已经被计算的值（称为：记忆化搜索 本质上：动态规划）
+最直观的解法是用 DFS 枚举所有可能路径，记录最小和。但这种方法效率很低，复杂度是指数级。
 
-![image.png](../images/dp_memory_search.png)
+```python
+def minimum_total_dfs_traverse(triangle):
+    if not triangle:
+        return 0
+
+    n = len(triangle)
+    best = float("inf")
+
+    def dfs(i, j, acc):
+        nonlocal best
+        acc += triangle[i][j]
+        if i == n - 1:
+            best = min(best, acc)
+            return
+        dfs(i + 1, j,     acc)
+        dfs(i + 1, j + 1, acc)
+
+    dfs(0, 0, 0)
+    return best
+```
+
+---
+
+## 方法二：分治（递归返回值）
+
+直接写成递推公式：
+
+$$
+f(i,j) = triangle[i][j] + \min(f(i+1,j), f(i+1,j+1))
+$$
+
+```python
+def minimum_total_divide_conquer(triangle):
+    if not triangle:
+        return 0
+
+    n = len(triangle)
+
+    def f(i, j):
+        if i == n - 1:
+            return triangle[i][j]
+        return triangle[i][j] + min(f(i + 1, j), f(i + 1, j + 1))
+
+    return f(0, 0)
+```
+
+这种方法依然会产生大量重复计算。
+
+---
+
+## 方法三：记忆化搜索（自顶向下 DP）
+
+在分治的基础上加入缓存。Python 可以用 `functools.lru_cache` 来自动保存子问题的结果，每个子问题只算一次，大幅提高效率。
+
+```python
+from functools import lru_cache
+
+def minimum_total_memo(triangle):
+    if not triangle:
+        return 0
+
+    n = len(triangle)
+
+    @lru_cache(maxsize=None)
+    def f(i, j):
+        if i == n - 1:
+            return triangle[i][j]
+        return triangle[i][j] + min(f(i + 1, j), f(i + 1, j + 1))
+
+    return f(0, 0)
+```
+
+---
+
+## 方法四：自底向上 DP（推荐）
+
+从底层开始往上推，逐步更新每个位置的最优解，最终得到顶点的答案。空间还能优化到 O(n)。
+
+```python
+def minimum_total_bottom_up(triangle):
+    if not triangle:
+        return 0
+
+    dp = triangle[-1][:]
+    for i in range(len(triangle) - 2, -1, -1):
+        for j in range(len(triangle[i])):
+            dp[j] = triangle[i][j] + min(dp[j], dp[j + 1])
+    return dp[0]
+```
+
+---
+
+## 总结
+
+* **DFS 遍历 / 分治**：直观但效率低，时间复杂度 O(2^n)。
+* **记忆化搜索**：自顶向下，每个子问题只算一次，时间复杂度 O(n²)。
+* **自底向上 DP**：最推荐，时间 O(n²)，空间 O(n)，代码也简洁。
+
+
 
 动态规划就是把大问题变成小问题，并解决了小问题重复计算的方法称为动态规划
 

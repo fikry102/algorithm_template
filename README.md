@@ -31,7 +31,12 @@
 - [二分搜索](./basic_algorithm/binary_search.md)
 - [排序算法](./basic_algorithm/sort.md)
 - [动态规划](./basic_algorithm/dp.md)
-- [图相关算法](./basic_algorithm/graph/)
+- 图相关算法
+  - [深度优先搜索 / 广度优先搜索](./basic_algorithm/graph/bfs_dfs.md)
+  - [图的表示](./basic_algorithm/graph/graph_representation.md)
+  - [拓扑排序](./basic_algorithm/graph/topological_sorting.md)
+  - [最小生成树](./basic_algorithm/graph/mst.md)
+  - [最短路径](./basic_algorithm/graph/shortest_path.md)
 
 ### 算法思维 🦁
 

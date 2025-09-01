@@ -67,7 +67,7 @@
 
 ## 后续计划
 
-本项目会持续更新和完善，欢迎关注和贡献。  
+本项目会持续更新和完善，欢迎关注。  
 如果对你有帮助，点个 **star** ⭐️ 支持一下！
 
 - [algorithm_template](https://github.com/fikry102/algorithm_template)  

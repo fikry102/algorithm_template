@@ -74,10 +74,8 @@
 - [Gitee 地址](https://gitee.com/ima_d/algorithm_template)  
 
 
-## 访问趋势
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=fikry102/algorithm_template&type=Date)](https://www.star-history.com/?utm_source=chatgpt.com#fikry102/algorithm_template&Date)
 
 ![GitHub visitors](https://visitor-badge.laobi.icu/badge?page_id=fikry102.algorithm_template)
-![GitHub stars](https://img.shields.io/github/stars/fikry102/algorithm_template?style=social)
-
-> 上图展示了项目的访问量与收藏趋势。  
-> 如果需要更详细的访问曲线，可以结合 [GitHub Insights](https://github.com/fikry102/algorithm_template/graphs/traffic) 或外部统计服务（如 Google Analytics / Gitee 插件）。

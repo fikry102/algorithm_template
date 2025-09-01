@@ -26,9 +26,14 @@
   - [最小生成树](./basic_algorithm/graph/mst.md)
   - [最短路径](./basic_algorithm/graph/shortest_path.md)
 
-### 算法思维 🦁
+### 高阶算法篇 🐉
+- [前缀和 & 差分数组](./advanced_algorithm/prefix_sum_and_difference.md)
+- [单调栈 & 单调队列](./advanced_algorithm/monotonic_stack_and_queue.md)
+- [线段树 (Segment Tree)](./advanced_algorithm/segment_tree.md)
+- [树状数组 (Fenwick Tree)](./advanced_algorithm/fenwick_tree.md)
 
-- [递归思维](./advanced_algorithm/recursion.md)
-- [滑动窗口思想](./advanced_algorithm/slide_window.md)
-- [二叉搜索树](./advanced_algorithm/binary_search_tree.md)
-- [回溯法](./advanced_algorithm/backtrack.md)
+### 算法策略 🦁
+- [递归策略](./algorithm_strategies/recursion.md)
+- [滑动窗口策略](./algorithm_strategies/slide_window.md)
+- [二叉搜索树](./algorithm_strategies/binary_search_tree.md)
+- [回溯策略](./algorithm_strategies/backtrack.md)

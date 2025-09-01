@@ -70,12 +70,11 @@
 本项目会持续更新和完善，欢迎关注和贡献。  
 如果对你有帮助，点个 **star** ⭐️ 支持一下！
 
-- [GitHub 地址](https://github.com/fikry102/algorithm_template)  
-- [Gitee 地址](https://gitee.com/ima_d/algorithm_template)  
+- [algorithm_template](https://github.com/fikry102/algorithm_template)  
 
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=fikry102/algorithm_template&type=Date)](https://www.star-history.com/?utm_source=chatgpt.com#fikry102/algorithm_template&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=fikry102/algorithm_template&type=Date)](https://www.star-history.com/?#fikry102/algorithm_template&Date)
 
 ![GitHub visitors](https://visitor-badge.laobi.icu/badge?page_id=fikry102.algorithm_template)

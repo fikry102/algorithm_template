@@ -18,7 +18,8 @@ for i, x in enumerate(nums):
         stack.pop()
     stack.append(i)
 ```
-
+维护一个单调栈（存下标），在遍历时用当前元素去弹掉不满足单调性的栈顶：
+执行 while 后，栈从底到顶对应的值严格递增：nums[stack[0]] < nums[stack[1]] < ... < nums[stack[-1]] < x。
 ### 经典题目
 
 #### [84. Largest Rectangle in Histogram](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)

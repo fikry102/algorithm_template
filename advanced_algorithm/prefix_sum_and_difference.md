@@ -46,7 +46,7 @@ class Solution:
 
 #### [974. Subarray Sums Divisible by K](https://leetcode-cn.com/problems/subarray-sums-divisible-by-k/)
 
-> 判断子数组和是否能被 k 整除，或统计这样的子数组数量。
+> 给定一个整数数组 nums 和一个整数 k ，返回其中元素之和可被 k 整除的非空 子数组 的数目。
 
 思路：余数相同的两个前缀和之差可以被 k 整除。
 

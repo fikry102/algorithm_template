@@ -23,6 +23,8 @@ for i, x in enumerate(nums):
 ### 经典题目
 
 #### [84. Largest Rectangle in Histogram](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)
+给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。
+求在该柱状图中，能够勾勒出来的矩形的最大面积。
 
 ```python
 class Solution:
@@ -82,6 +84,8 @@ for i, x in enumerate(nums):
 
 #### [239. Sliding Window Maximum](https://leetcode-cn.com/problems/sliding-window-maximum/)
 
+给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。
+返回 滑动窗口中的最大值 。
 ```python
 class Solution:
     def maxSlidingWindow(self, nums, k: int):

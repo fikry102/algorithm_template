@@ -65,7 +65,7 @@ class Solution:
 ## 单调队列
 
 ### 模板
-
+队列中的元素保持单调递减的顺序，即队头元素始终是当前窗口中的最大值。
 ```python
 from collections import deque
 

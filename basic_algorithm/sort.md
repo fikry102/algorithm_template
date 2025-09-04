@@ -39,6 +39,8 @@ if __name__ == '__main__':
     print(quicksort(a))
 ```
 
+partition_idx 用来标记当前已知小于枢轴元素的子数组的最后一个元素的位置。
+每当遇到一个小于枢轴的元素，就把它移到左边（即交换到 partition_idx 位置），然后 partition_idx 向右移动。
 ### 归并排序
 
 ```Python

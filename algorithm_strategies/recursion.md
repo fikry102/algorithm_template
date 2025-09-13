@@ -1,4 +1,4 @@
-# 递归
+# 递归 recursion
 
 ## 介绍
 
@@ -16,17 +16,31 @@ class Solution:
         """
         Do not return anything, modify s in-place instead.
         """
-        def rev_rec(s, i, j):
-            if i >= j:
+        def _swap(i,j):
+            if i>=j:
                 return
-            s[i], s[j] = s[j], s[i]
-            rev_rec(s, i + 1, j - 1)
-            return
-        
-        rev_rec(s, 0, len(s) - 1)
-        
+            s[i],s[j]=s[j],s[i]
+            _swap(i+1,j-1)
+        _swap(0,len(s)-1)
+```
+这里面我们只是练习递归策略，解释器在每次递归调用时，会在调用栈里保存函数的上下文（参数、局部变量、返回点等），导致空间复杂度是O(n);
+当然，这道题其实用双指针来做，空间复杂度更好，为O(1),代码如下。
+
+```python
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        left, right=0, len(s)-1
+        while left<right:
+            s[left],s[right]=s[right],s[left]
+            left+=1
+            right-=1    
         return
 ```
+
+
 
 ### [swap-nodes-in-pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)
 

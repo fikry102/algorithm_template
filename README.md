@@ -17,6 +17,8 @@
 - [使用 Python3 写算法题](./introduction/python.md)
 - [Python高阶语法](./introduction/advanced_python.md) 
 - [算法快速入门](./introduction/quickstart.md)
+- [写代码VS Code快捷键](./introduction/shortcuts.md)
+  
 
 ### 🐰 数据结构篇
 - [二叉树](./data_structure/binary_tree.md)

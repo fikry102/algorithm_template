@@ -81,46 +81,40 @@ def sliding_window(s: str, t: str):
 > -如果 s 中存在这样的子串，我们保证它是唯一的答案
 
 ```Python
+from collections import Counter, defaultdict
+
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        
-        target = collections.defaultdict(int)
-        window = collections.defaultdict(int)
-        
-        for c in t:
-            target[c] += 1
-            
-        min_size = len(s) + 1
-        min_str = ''
-        
-        l, r, count, num_char = 0, 0, 0, len(target)
-        
-        while r < len(s):
-            c = s[r]
-            r += 1
+        need = Counter(t)
+        window = defaultdict(int)
+        valid = 0
 
-            if c in target:
+        left = 0
+        right = 0
+        start, min_len = 0, float('inf')
+
+        while right < len(s):
+            c = s[right]
+            right += 1
+
+            if c in need:
                 window[c] += 1
-                
-                if window[c] == target[c]:
-                    count += 1
-                    
-                    if count == num_char:
-                        while l < r and count == num_char:
-                            c = s[l]
-                            l += 1
-                            
-                            if c in target:
-                                window[c] -= 1
-                                
-                                if window[c] == target[c] - 1:
-                                    count -= 1
-                                    
-                        if min_size > r - l + 1:
-                            min_size = r - l + 1
-                            min_str = s[l - 1:r]
-        
-        return min_str
+                if window[c] == need[c]:
+                    valid += 1
+
+            while valid == len(need):
+                if right - left < min_len:
+                    start, min_len = left, right - left
+
+                d = s[left]
+                left += 1
+
+                if d in need:
+                    if window[d] == need[d]:
+                        valid -= 1
+                    window[d] -= 1
+
+        return "" if min_len == float('inf') else s[start:start + min_len]
 ```
 
 ### [permutation-in-string](https://leetcode-cn.com/problems/permutation-in-string/)

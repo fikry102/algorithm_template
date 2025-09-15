@@ -16,7 +16,7 @@
 ### 🐣 入门篇
 - [使用 Python3 写算法题](./introduction/python.md)
 - [算法快速入门](./introduction/quickstart.md)
-- [写代码VS Code快捷键](./introduction/shortcuts.md)
+- [VS Code编程快捷键](./introduction/shortcuts.md)
 - [Python高阶语法](./introduction/advanced_python.md) 
 - [Python元编程](./introduction/metaprogramming.md)
 

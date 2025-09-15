@@ -117,6 +117,48 @@ class Solution:
         return "" if min_len == float('inf') else s[start:start + min_len]
 ```
 
+当然，上面的写法有点冗长了，一种更加基础的写法是下面这样的：
+```python
+from collections import Counter
+
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+        need = Counter(t)
+        window = Counter()
+        left = 0
+        right = 0
+        start, min_len = 0, float('inf')
+
+        while right < len(s):
+            window[s[right]] += 1
+            right += 1
+
+            while window >= need:  # 直接通过 Counter 比较
+                if right - left < min_len:
+                    start, min_len = left, right - left
+
+                window[s[left]] -= 1
+                left += 1
+
+        return "" if min_len == float('inf') else s[start:start + min_len]
+```
+对于这段代码的分析：
+
+1. **去除 `valid` 计数器**：
+   - 通过直接比较 `window >= need`，我们不再需要使用 `valid` 来追踪符合条件的字符种类数。代码更简洁，不需要额外的变量来进行管理。
+
+2. **简化窗口更新**：
+   - 在更新窗口时，使用 `window[s[right]] += 1` 和 `window[s[left]] -= 1` 来更新窗口中的字符频次。这避免了手动管理字符计数，代码变得更加直观。
+
+3. **使用 `window >= need`**：
+   - `Counter` 对象支持直接比较，使用 `window >= need` 来判断窗口是否包含 `t` 中所有字符的要求。这使得频次的判断更加简洁，无需手动逐个检查每个字符的频次。
+
+- 注意：复杂度变化
+虽然通过使用 `Counter` 比较，使代码变得简洁，但 **时间复杂度** 反而有所增加。每次窗口更新时，`window >= need` 的比较需要 **O(∣Σ∣)** 的时间，其中 `∣Σ∣` 为字符集大小（对于英文字母，通常为 26 或 52）。因此，最坏情况下 **时间复杂度** 会变为 `O(∣Σ∣ * m+n)`，其中 `m` 是字符串 `s` 的长度,`n`是字符串`t`的长度。
+
+相对于原来的 `valid` 计数器方案（通过手动管理字符频次），这会导致更高的时间复杂度。虽然代码变得更简洁，但效率会下降，尤其是在字符集非常大的情况下。
+
+
 ### [permutation-in-string](https://leetcode-cn.com/problems/permutation-in-string/)
 
 > 给定两个字符串  **s1**  和  **s2**，写一个函数来判断  **s2**  是否包含  **s1 **的排列。

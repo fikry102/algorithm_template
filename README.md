@@ -1,6 +1,6 @@
 # 算法模板
 
-本项目 [algorithm_template](https://gitee.com/ima_d/algorithm_template) 基于 **Python** 实现，覆盖了常见的数据结构与算法模板，适合刷题和求职面试快速上手。
+本项目 [algorithm_template](https://github.com/fikry102/algorithm_template) 基于 **Python** 实现，覆盖了常见的数据结构与算法模板，适合刷题和求职面试快速上手。
 
 ## 为什么要用算法模板？
 

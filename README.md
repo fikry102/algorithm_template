@@ -2,6 +2,13 @@
 
 本项目 [algorithm_template](https://github.com/fikry102/algorithm_template) 基于 **Python** 实现，覆盖了常见的数据结构与算法模板，适合刷题和求职面试快速上手。
 
+
+## 0.LeetCode Hot100速通
+可以直接上手leetcode热题100感受一下，https://leetcode.cn/problem-list/2cktkvj/
+
+思考过程和代码：[leetcode_hot_100_solutions](leetcode_hot100/insight_and_solution.md)
+欢迎大家提issue讨论和贡献更好的解法
+
 ## 1.为什么要用算法模板？
 
 刷题不仅是练习算法本身，更是掌握套路与方法。  
@@ -10,9 +17,6 @@
 - 快速找到切入点，不再无从下手  
 - 熟悉高频题型，总结可复用的解题套路  
 - 一个月左右完成系统刷题，冲刺大厂面试
-
-也可以直接上手leetcode热题100感受一下，https://leetcode.cn/problem-list/2cktkvj/
-
 
 ## 2.常见解题技巧和经典问题
 

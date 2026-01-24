@@ -154,9 +154,47 @@ class Solution:
 
 **保存后继，反转指针，当前节点并入反转部分，处理下一个**
 
+1：slow会指向1
+
+1 2 1： slow最终会指向2
+
+1 2 2 1：slow最终会指向第2个2
+
+```python
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        fast = slow = head
+        fast = fast.next
+        while fast and slow: #slow走一步，fast走两步
+            slow = slow.next
+            fast = fast.next
+            if fast:
+                fast = fast.next
+        #这个时候，肯定是fast为None了，slow指向链表的右边一半的开头结点
+        prev = None
+        while slow:
+            temp = slow.next
+            slow.next = prev
+            prev = slow
+            slow = temp
+        
+        #比较两个链表
+        while prev:
+            if prev.val != head.val:
+                return False
+            prev = prev.next
+            head = head.next
+        return True
+
+```
 
 
 
-
-
+### 4. [739. 每日温度 - 力扣（LeetCode）](https://leetcode.cn/problems/daily-temperatures/?envType=problem-list-v2&envId=2cktkvj)
 

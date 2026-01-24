@@ -4,10 +4,11 @@
 
 
 ## 0.LeetCode Hot100速通
-可以直接上手leetcode热题100感受一下，https://leetcode.cn/problem-list/2cktkvj/
+可以直接上手LeetCode热题100感受一下，https://leetcode.cn/problem-list/2cktkvj/
 
-思考过程和代码：[leetcode_hot_100_solutions](leetcode_hot100/insight_and_solution.md)
-欢迎大家提issue讨论和贡献更好的解法
+新增LeetCode Hot 100解题思考和代码：[leetcode_hot_100_solutions](leetcode_hot100/insight_and_solution.md)
+
+欢迎大家提Issue讨论和提交PR贡献更好的解法。
 
 ## 1.为什么要用算法模板？
 

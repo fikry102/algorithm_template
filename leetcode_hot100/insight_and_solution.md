@@ -1,9 +1,6 @@
 [https://leetcode.cn/problem-list/2cktkvj/](https://leetcode.cn/problem-list/2cktkvj/)
 
 
-
-
-
 ### 1. [160. 相交链表 - 力扣（LeetCode）](https://leetcode.cn/problems/intersection-of-two-linked-lists/?envType=problem-list-v2&envId=2cktkvj)
 
 一种自然的思路，遍历两个链表，分别存到两个列表中，然后从末尾往前找出相交部分的首个节点。

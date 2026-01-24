@@ -6,7 +6,7 @@
 ## 0.LeetCode Hot100速通
 可以直接上手LeetCode热题100感受一下，https://leetcode.cn/problem-list/2cktkvj/
 
-新增LeetCode Hot 100解题思考和代码：[leetcode_hot_100_solutions](leetcode_hot100/insight_and_solution.md)
+新增LeetCode Hot 100解题思路和代码：[leetcode_hot_100_solutions](leetcode_hot100/insight_and_solution.md)
 
 欢迎大家提Issue讨论和提交PR贡献更好的解法。
 

@@ -197,4 +197,74 @@ class Solution:
 
 
 ### 4. [739. 每日温度 - 力扣（LeetCode）](https://leetcode.cn/problems/daily-temperatures/?envType=problem-list-v2&envId=2cktkvj)
+题目中给了而个提示 1：
 
+If the temperature is say, 70 today, then in the future a warmer temperature must be either 71, 72, 73, ..., 99, or 100. We could remember when all of them occur next.
+
+
+
+思考了下，觉得说可以用一个字典来存储每种温度出现的下标，然后遍历列表，对当前的温度，通过字典查找比它大的温度的下标的最小值
+
+根据上面的思路，可以写出来一份代码，3个测试用例通过了；但是`for candidate in d[c]:`这部分其实很耗时，所以提交的时候超时了
+
+```python
+from collections import defaultdict
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        d=defaultdict(list)
+        for i,t in enumerate(temperatures):
+            d[t].append(i)
+        res = []
+        for i,t in enumerate(temperatures):
+            min_i=1000000
+            for c in range(t+1,101):
+                if c in d.keys():
+                    for candidate in d[c]:
+                        if candidate > i:
+                            min_i =min(min_i,candidate-i)
+                            break
+            if min_i !=1000000:
+                res.append(min_i)
+            else:
+                res.append(0)
+        return res
+```
+
+
+
+不过有个值得注意的点，d[c]是按顺序添加的下标，所以可以引入二分查找来优化下时间复杂度, 好像过了
+
+```python
+from collections import defaultdict
+import bisect
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        d=defaultdict(list)
+        for i,t in enumerate(temperatures):
+            d[t].append(i)
+        res = []
+        for i,t in enumerate(temperatures):
+            min_i=1000000
+            for c in range(t+1,101):
+                if c in d.keys():
+                    lst=d[c]
+                    pos = bisect.bisect_right(lst,i)
+                    if pos < len(lst):
+                        min_i =min(min_i,lst[pos]-i)
+            if min_i !=1000000:
+                res.append(min_i)
+            else:
+                res.append(0)
+        return res
+
+
+
+
+        
+```
+
+
+
+这道题其实可以用单调栈来进行更加高效求解：
+
+栈里永远只保留那些**至今还没找到“下一个更大元素”的元素。而且，这些元素在栈里是**从底到顶严格递减**的

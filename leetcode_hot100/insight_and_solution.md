@@ -197,7 +197,7 @@ class Solution:
 
 
 ### 4. [739. 每日温度 - 力扣（LeetCode）](https://leetcode.cn/problems/daily-temperatures/?envType=problem-list-v2&envId=2cktkvj)
-题目中给了而个提示 1：
+题目中给了个提示 1：
 
 If the temperature is say, 70 today, then in the future a warmer temperature must be either 71, 72, 73, ..., 99, or 100. We could remember when all of them occur next.
 

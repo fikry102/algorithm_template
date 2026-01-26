@@ -268,3 +268,57 @@ class Solution:
 这道题其实可以用单调栈来进行更加高效求解：
 
 栈里永远只保留那些**至今还没找到“下一个更大元素”的人**。而且，这些人在栈里是**从底到顶严格递减**的
+
+```python
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        stack=[]
+        res=[0]*len(temperatures)
+        for i, t in enumerate(temperatures):
+            if stack and t>temperatures[stack[-1]]:
+                index = stack.pop()
+                res[index]=i-index
+            else:
+                stack.append(i)
+        return res
+```
+
+一开始实现的时候写成了上面的版本，其中的问题在于：只 pop 一次不够：当前温度可能同时比栈里多个下标对应的温度都高，需要一直弹到不满足为止。 结论：**应该用 while而不是if**
+
+```python
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        stack=[]
+        res=[0]*len(temperatures)
+        for i, t in enumerate(temperatures):
+            while stack and t>temperatures[stack[-1]]:
+                index = stack.pop()
+                res[index]=i-index
+            else:
+                stack.append(i)
+        return res
+```
+
+上面这个版本跑通了，但实际上有个小小的问题，就是else:这部分其实没必要，好在while else这种语法也是有的，才能跑通。
+
+**while-else** 语法的规则是：
+
+- else 会在 **while 循环“正常结束”** 时执行（也就是条件变成 False 退出）。
+- 如果 while 里发生了 break，则 **不会执行** else。
+
+
+
+可以简化一下形成最终的版本：先 while 弹栈更新答案，最后无条件 append(i)。
+
+```python
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        stack=[]
+        res=[0]*len(temperatures)
+        for i, t in enumerate(temperatures):
+            while stack and t>temperatures[stack[-1]]:
+                index = stack.pop()
+                res[index]=i-index
+            stack.append(i)
+        return res
+```

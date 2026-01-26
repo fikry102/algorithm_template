@@ -308,7 +308,7 @@ class Solution:
 
 
 
-可以简化一下形成最终的版本：先 while 弹栈更新答案，最后无条件 append(i)。
+可以简化一下形成最终的版本：先 while 弹栈更新答案，最后无条件 append(i), **因为当前的i不管怎样都是需要入栈以便后续进行处理的**
 
 ```python
 class Solution:

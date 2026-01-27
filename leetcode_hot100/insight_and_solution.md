@@ -326,3 +326,26 @@ class Solution:
 
 
 ### 5. [226. 翻转二叉树 - 力扣（LeetCode）](https://leetcode.cn/problems/invert-binary-tree/description/?envType=problem-list-v2&envId=2cktkvj)
+
+递归调用，交换左子树和右子树就行
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        def invert(root):
+            root.left, root.right=root.right, root.left
+            if root.left:
+                invert(root.left)
+            if root.right:
+                invert(root.right)
+        if root:
+            invert(root)
+        return root
+```
+

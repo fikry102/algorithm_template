@@ -421,3 +421,7 @@ class Solution:
                
         return solve(0,len(nums)-1)
 ```
+
+
+
+### 8. [208. 实现 Trie (前缀树) - 力扣（LeetCode）](https://leetcode.cn/problems/implement-trie-prefix-tree/?envType=problem-list-v2&envId=2cktkvj)

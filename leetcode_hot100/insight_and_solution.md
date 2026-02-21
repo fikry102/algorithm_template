@@ -386,3 +386,38 @@ class Solution:
 2.有序数组退化  →  随机选取pivot 
 
 3.重复元素退化  →  三路划分 
+
+
+
+```python
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        target=len(nums)- k 
+        def solve(left, right):
+            if left==right:
+                return nums[left]
+
+            low,mid,high =left,left,right  #we move mid to achieve partition
+            pivot=nums[random.randint(left,right)]
+            while mid <= high: #[mid,high]内的元素有待和pivot进行比较
+                if nums[mid]<pivot:
+                    nums[low],nums[mid]=nums[mid],nums[low]
+                    low+=1
+                    mid+=1
+                elif nums[mid]==pivot:
+                    mid+=1
+                else:
+                    nums[high],nums[mid]=nums[mid],nums[high] 
+                    high-=1
+            #mid 现在指向的位置，是之前遇到 > pivot 不断把 high 左移后留下的边界；
+            # 即 [mid, right] 全是 > pivot 的元素
+            #[left,low):<pivot, [low,mid):==pivot, [mid, right]:>pivot
+            if low<=target<mid:
+                return pivot
+            elif target<low:
+                return solve(left,low-1)
+            else:
+                return solve(high+1,right)
+               
+        return solve(0,len(nums)-1)
+```

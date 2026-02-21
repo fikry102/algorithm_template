@@ -349,8 +349,31 @@ class Solution:
         return root
 ```
 
-
 ### 6. [221. 最大正方形 - 力扣（LeetCode）](https://leetcode.cn/problems/maximal-square/?envType=problem-list-v2&envId=2cktkvj)
 
+使用动态规划来求解：
 
+对于每个位置 (i,j)，检查在矩阵中该位置的值：
+
+如果该位置的值是 0，则 `dp[i][j]`=0，因为当前位置不可能在由 1 组成的正方形中；
+
+如果该位置的值是 1，则 `dp[i][j]` 的值由其上方、左方和左上方的三个相邻位置的 dp 值决定。具体而言，当前位置的元素值等于三个相邻位置的元素中的最小值加 1，状态转移方程：`dp[i][j]=min(dp[i-1][j], dp[i][j-1],dp[i-1][j-1])+1`
+
+
+
+```python
+class Solution:
+    def maximalSquare(self, matrix: List[List[str]]) -> int:
+        #使用dp来求解,dp[i][j]用来表示以(i,j)作为右下角点能构成的最大正方形的边长
+        #dp[i][j]=min(dp[i-1][j], dp[i][j-1],dp[i-1][j-1])+1
+        rows,cols=len(matrix), len(matrix[0])
+        dp=[[0]*cols for _ in range(rows+1)]
+        ans=0
+        for i in range(rows):
+            for j in range(cols):
+                if matrix[i][j]=='1':
+                    dp[i][j]=1+min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1])
+                    ans=max(dp[i][j],ans)
+        return ans*ans                 
+```
 

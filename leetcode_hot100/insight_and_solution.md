@@ -380,3 +380,9 @@ class Solution:
 
 
 ### 7. [215. 数组中的第K个最大元素 - 力扣（LeetCode）](https://leetcode.cn/problems/kth-largest-element-in-an-array/?envType=problem-list-v2&envId=2cktkvj)
+
+1.只找第k大    →  利用快排的partition方法进行快速选择，只递归target所在的那一侧 
+
+2.有序数组退化  →  随机选取pivot 
+
+3.重复元素退化  →  三路划分 

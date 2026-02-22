@@ -425,3 +425,31 @@ class Solution:
 
 
 ### 8. [208. 实现 Trie (前缀树) - 力扣（LeetCode）](https://leetcode.cn/problems/implement-trie-prefix-tree/?envType=problem-list-v2&envId=2cktkvj)
+“用嵌套字典存前缀”：
+	•	根就是一个容器（开始时通常是空的 {}），里面按字符开分支。
+	•	插入：对单词每个字符，如果当前层没有这个字符就新建一个空分支，然后进入下一层；单词结束处放一个“结束标记”。
+	•	search：按字符一路走，走不通就不存在；走完还得有“结束标记”才算这个词被插入过。
+	•	startsWith：只要前缀这条路走得通就行，不看结束标记。
+
+
+
+
+
+
+
+
+
+### 9. [207. 课程表 - 力扣（LeetCode）](https://leetcode.cn/problems/course-schedule/?envType=problem-list-v2&envId=2cktkvj)
+
+
+
+
+
+
+
+
+
+### 10. [206. 反转链表 - 力扣（LeetCode）](https://leetcode.cn/problems/reverse-linked-list/?envType=problem-list-v2&envId=2cktkvj)
+
+
+

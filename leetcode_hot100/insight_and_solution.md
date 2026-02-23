@@ -435,17 +435,80 @@ class Solution:
 
 
 
+```python
+class Trie:
 
+    def __init__(self):
+        self.root={}
+
+    def insert(self, word: str) -> None:
+        node=self.root
+        for ch in word:
+            node.setdefault(ch,{})
+            node=node[ch]
+        node['#']=True
+
+    def search(self, word: str) -> bool:
+        node=self.root
+        for ch in word:
+            if ch not in node:
+                return False
+            node=node[ch]
+        return '#' in node
+
+    def startsWith(self, prefix: str) -> bool:
+        node = self.root
+        for ch in prefix:
+            if ch not in node:
+                return False
+            node = node[ch]
+        return True
+
+
+# Your Trie object will be instantiated and called as such:
+# obj = Trie()
+# obj.insert(word)
+# param_2 = obj.search(word)
+# param_3 = obj.startsWith(prefix)
+```
 
 
 
 ### 9. [207. 课程表 - 力扣（LeetCode）](https://leetcode.cn/problems/course-schedule/?envType=problem-list-v2&envId=2cktkvj)
 
+使用bfs进行广度优先搜索，把所有入度为0的节点入栈，然后 不断出栈，看下最终是否所有节点的入度都为0
 
+```python
+from collections import deque, defaultdict
 
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        indegree=[0]*numCourses
 
+        #用一个字典记录一下所有的pairs
+        d=defaultdict(list)
+        for t,s in prerequisites:
+            d[s].append(t)
+            indegree[t]+=1
+        
+        q=deque()
+        for i in range(numCourses):
+            if indegree[i]==0:
+                q.append(i)
+        while q:
+            k = q.popleft()
+            for v in d[k]:
+                indegree[v]-=1
+                if indegree[v]==0:
+                    q.append(v)
+        
+        for num in indegree:
+            if num!=0:
+                return False
+        return True
 
-
+            
+```
 
 
 

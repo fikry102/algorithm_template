@@ -514,5 +514,26 @@ class Solution:
 
 ### 10. [206. 反转链表 - 力扣（LeetCode）](https://leetcode.cn/problems/reverse-linked-list/?envType=problem-list-v2&envId=2cktkvj)
 
+重点是要用tmp暂存一下fast.next
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        slow=None
+        fast=head
+        while fast:
+            tmp=fast.next
+            fast.next=slow
+            slow=fast
+            fast=tmp
+        return slow
+```
 
 
+
+### 11. [200. 岛屿数量 - 力扣（LeetCode）](https://leetcode.cn/problems/number-of-islands/description/?envType=problem-list-v2&envId=2cktkvj)

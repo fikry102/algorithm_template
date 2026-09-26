@@ -3,6 +3,9 @@
 本项目 [algorithm_template](https://github.com/fikry102/algorithm_template) 基于 **Python** 实现，覆盖了常见的数据结构与算法模板，适合刷题和求职面试快速上手。
 
 
+🎉 2026年9月27日新增 [LeetCode 算法速通笔记（Python 版本）](./leetcode_hot100/leetcode_algorithm_quickstart_python.md)：
+从哈希表、双指针、前缀和、链表、二叉树、图论、回溯和动态规划，到 Python 常用语法、排序、二分查找、单调栈与单调队列，系统整理题型识别、解题思路、代码模板和易错点。
+
 ## 0.LeetCode Hot100速通
 可以直接上手LeetCode热题100感受一下，https://leetcode.cn/problem-list/2cktkvj/
 
